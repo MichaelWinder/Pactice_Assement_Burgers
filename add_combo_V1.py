@@ -1,5 +1,7 @@
 import easygui
 import os
+# Right click on import PIL to install it to your computer, so you can see
+# the images
 import PIL
 
 burger_Combos = {
@@ -12,15 +14,13 @@ burger_Combos = {
         {"Cheeseburger": "6.69",
          "Fries": "1.00",
          "Fizzy drink": "1.00"
-        },
+         },
     "SUPER":
         {"Cheeseburger": "6.69",
          "Large fries": "2",
          "Smoothie": "2"
-        }
+         }
 }
-image = "\\Downloads\\Ethan Gamer.png"
-user_profile = os.environ['USERPROFILE']
-print(user_profile)
-image2 = user_profile + image
-easygui.msgbox(image=image2)
+image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
+def add_Combo():
+    5
