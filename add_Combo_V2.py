@@ -33,13 +33,11 @@ def add_combo():
     burger = easygui.enterbox("Enter Burger: ", "Adjuster 9000",
                               image=image).capitalize()
     burger_price = easygui.enterbox(f"Enter Price for {burger}\nDon't use "
-                                    f"$ sign",
-                                    "Adjuster 9000", image=image)
+                                    f"$ sign", "Adjuster 9000", image=image)
     side = easygui.enterbox("Enter Side: ", "Adjuster 9000",
                             image=image).capitalize()
     side_price = easygui.enterbox(f"Enter Price for {side}\nDon't use "
-                                  f"$ sign",
-                                  "Adjuster 9000", image=image)
+                                  f"$ sign", "Adjuster 9000", image=image)
     drink = easygui.enterbox("Enter Drink: ", "Adjuster 9000",
                              image=image).capitalize()
     drink_price = easygui.enterbox(f"Enter Price for {drink}\nDon't use "
@@ -48,6 +46,15 @@ def add_combo():
     burger_price = float(burger_price)
     side_price = float(side_price)
     drink_price = float(drink_price)
+    total_price = burger_price+side_price+drink_price
+    option = easygui.ynbox(f"Is the order correct?\n{combo_ID}\n{burger}: "
+                           f"${burger_price}\n{side}: ${side_price}\n{drink}: "
+                           f"${drink_price}\nTotal Price: $"
+                           f"{total_price:.2f}", "Adjuster 9000", image=image)
+    if option:
+        pass
+    else:
+        add_combo()
     burger_Combos[combo_ID] = {}
     burger_Combos[combo_ID][burger] = burger_price
     burger_Combos[combo_ID][side] = side_price

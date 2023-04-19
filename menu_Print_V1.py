@@ -1,5 +1,6 @@
 import easygui
 import os
+import time
 # Right click on import PIL to install it to your computer, so you can see
 # the images
 import PIL
@@ -17,8 +18,8 @@ burger_Combos = {
          },
     "SUPER":
         {"Cheeseburger": "6.69",
-         "Large fries": "2",
-         "Smoothie": "2"
+         "Large fries": "2.00",
+         "Smoothie": "2.00"
          }
 }
 image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
@@ -26,10 +27,10 @@ image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 def menu_print():
     for combo_id, combo_info in burger_Combos.items():
-        print(f"\nHero ID: {combo_id}")
+        print(f"\nCombo ID: {combo_id}")
 
         for key in combo_info:
-            print(f"{key}: {combo_info[key]}")
+            print(f"{key}: ${combo_info[key]}")
 
 
 def welcome():
@@ -49,8 +50,8 @@ def welcome():
         pass
     # delete_Combo()
     elif option == "Combo Menu":
-        pass
-    # menu_print()
+        time.sleep(0.5)
+        menu_print()
     elif option == "Exit":
         pass
 

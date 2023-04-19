@@ -26,11 +26,19 @@ image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 
 def menu_print():
+    print("="*20)
     for combo_id, combo_info in burger_Combos.items():
         print(f"\nCombo ID: {combo_id}")
 
         for key in combo_info:
             print(f"{key}: ${combo_info[key]}")
+        total_price_list = []
+        keys = burger_Combos[combo_id].keys()
+        for e in keys:
+            total_price_list.append(float(burger_Combos[combo_id][e]))
+        print(f"The total cost for the {combo_id} combo is "
+              f"${sum(total_price_list):.2f}")
+    print("="*20)
 
 
 def welcome():

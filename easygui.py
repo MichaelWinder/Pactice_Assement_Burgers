@@ -763,13 +763,13 @@ def __multenterboxCancel(event):
 # -------------------------------------------------------------------
 # enterbox
 # -------------------------------------------------------------------
-def enterbox(msg="Enter something."
-             , title=" "
-             , default=""
-             , strip=True
-             , image=None
-             , root=None
-             ):
+def enterbox(msg: object = "Enter something."
+             , title: object = " "
+             , default: object = ""
+             , strip: object = True
+             , image: object = None
+             , root: object = None
+             ) -> object:
     """
     Show a box in which a user can enter some text.
 

@@ -25,7 +25,6 @@ burger_Combos = {
 image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 
-# noinspection PyTypeChecker
 def add_combo():
     combo_ID = easygui.enterbox("Enter Combo ID: ", "Adjuster "
                                                     "9000",
@@ -33,13 +32,11 @@ def add_combo():
     burger = easygui.enterbox("Enter Burger: ", "Adjuster 9000",
                               image=image).capitalize()
     burger_price = easygui.enterbox(f"Enter Price for {burger}\nDon't use "
-                                    f"$ sign",
-                                    "Adjuster 9000", image=image)
+                                    f"$ sign", "Adjuster 9000", image=image)
     side = easygui.enterbox("Enter Side: ", "Adjuster 9000",
                             image=image).capitalize()
     side_price = easygui.enterbox(f"Enter Price for {side}\nDon't use "
-                                  f"$ sign",
-                                  "Adjuster 9000", image=image)
+                                  f"$ sign", "Adjuster 9000", image=image)
     drink = easygui.enterbox("Enter Drink: ", "Adjuster 9000",
                              image=image).capitalize()
     drink_price = easygui.enterbox(f"Enter Price for {drink}\nDon't use "
@@ -48,10 +45,40 @@ def add_combo():
     burger_price = float(burger_price)
     side_price = float(side_price)
     drink_price = float(drink_price)
+    total_price = burger_price + side_price + drink_price
+    option = easygui.ynbox(f"Is the order correct?\n{combo_ID}\n{burger}: "
+                           f"${burger_price}\n{side}: ${side_price}\n{drink}: "
+                           f"${drink_price}\nTotal Price: $"
+                           f"{total_price:.2f}", "Adjuster 9000", image=image)
+    if option:
+        pass
+    else:
+        add_combo()
     burger_Combos[combo_ID] = {}
     burger_Combos[combo_ID][burger] = burger_price
     burger_Combos[combo_ID][side] = side_price
     burger_Combos[combo_ID][drink] = drink_price
+
+
+def change_combo():
+    combo_list = []
+    for i in burger_Combos:
+        combo_list.append(i)
+    option = easygui.buttonbox("What Combo would you like to change",
+                               "Adjuster 9000", choices=combo_list,
+                               image=image)
+    burger_Combos.pop(option)
+    add_combo()
+
+
+def delete_combo():
+    combo_list = []
+    for i in burger_Combos:
+        combo_list.append(i)
+    option = easygui.multchoicebox("What Combo/s would you like to delete",
+                                   "Adjuster 9000", choices=combo_list)
+    for o in option:
+        burger_Combos.pop(o)
 
 
 def menu_print():
@@ -69,21 +96,19 @@ def welcome():
                                "9000!\n\nWhat would you like to do?",
                                "Adjuster 9000", image=image,
                                choices=("Add Combo", "Change Combo",
-                                        "Delete Combo","Combo Menu","Exit"))
+                                        "Delete Combo", "Combo Menu", "Exit"))
 
     if option == "Add Combo":
         add_combo()
     elif option == "Change Combo":
-        pass
-    # change_combo()
+        change_combo()
     elif option == "Delete Combo":
-        pass
-    # delete_combo()
+        delete_combo()
     elif option == "Combo Menu":
         time.sleep(0.5)
         menu_print()
     elif option == "Exit":
-        pass
+        quit()
 
 
 while True:
