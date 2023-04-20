@@ -1,6 +1,3 @@
-""" This program is a tool for digitally creating a menu of combos that
-consist of a Burger, Side, and a Drink. The program allows the users to
-create combos, change combos, delete combos, and view the current menu """
 import easygui
 import os
 import time
@@ -8,7 +5,6 @@ import time
 # the images
 import PIL
 
-# Main Dictionary
 burger_Combos = {
     "VALUE":
         {"Beef burger": 5.69,
@@ -26,12 +22,9 @@ burger_Combos = {
          "Smoothie": 2.00
          }
 }
-# To simplify the process of showing images
 image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 
-# Uses a series of easygui enter boxs to get the details from the user
-# required to create a new combo. Then creates the new combo
 def add_combo():
     combo_ID = easygui.enterbox("Enter Combo ID: ", "Adjuster "
                                                     "9000",
@@ -40,44 +33,18 @@ def add_combo():
                               image=image).capitalize()
     burger_price = easygui.enterbox(f"Enter Price for {burger}\nDon't use "
                                     f"$ sign", "Adjuster 9000", image=image)
-    while True:
-        try:
-            burger_price = float(burger_price)
-            break
-        except ValueError:
-            easygui.msgbox("Opps looks like your input wasn't a number\nTry "
-                           "again", "Adjuster 9000", image=image)
-            burger_price = easygui.enterbox(
-                f"Enter Price for {burger}\nDon't use "
-                f"$ sign", "Adjuster 9000", image=image)
     side = easygui.enterbox("Enter Side: ", "Adjuster 9000",
                             image=image).capitalize()
     side_price = easygui.enterbox(f"Enter Price for {side}\nDon't use "
                                   f"$ sign", "Adjuster 9000", image=image)
-    while True:
-        try:
-            side_price = float(side_price)
-            break
-        except ValueError:
-            easygui.msgbox("Opps looks like your input wasn't a number\nTry "
-                           "again", "Adjuster 9000", image=image)
-            side_price = easygui.enterbox(f"Enter Price for {side}\nDon't use "
-                                          f"$ sign", "Adjuster 9000",
-                                          image=image)
     drink = easygui.enterbox("Enter Drink: ", "Adjuster 9000",
                              image=image).capitalize()
     drink_price = easygui.enterbox(f"Enter Price for {drink}\nDon't use "
-                                   f"$ sign", "Adjuster 9000", image=image)
-    while True:
-        try:
-            drink_price = float(drink_price)
-            break
-        except ValueError:
-            easygui.msgbox("Opps looks like your input wasn't a number\nTry "
-                           "again", "Adjuster 9000", image=image)
-            drink_price = easygui.enterbox(
-                f"Enter Price for {drink}\nDon't use $ sign", "Adjuster 9000",
-                image=image)
+                                   f"$ sign",
+                                   "Adjuster 9000", image=image)
+    burger_price = float(burger_price)
+    side_price = float(side_price)
+    drink_price = float(drink_price)
     total_price = burger_price + side_price + drink_price
     option = easygui.ynbox(f"Is the order correct?\n{combo_ID}\n{burger}: "
                            f"${burger_price}\n{side}: ${side_price}\n{drink}: "
@@ -93,7 +60,6 @@ def add_combo():
     burger_Combos[combo_ID][drink] = drink_price
 
 
-# Allows the user to change an already added combo
 def change_combo():
     combo_list = []
     for i in burger_Combos:
@@ -126,9 +92,9 @@ def change_combo():
                     f"Don't use $ sign", "Adjuster 9000", image=image)
         del burger_Combos[option][u]
         burger_Combos[option][item] = item_price
+    welcome()
 
 
-# Deletes a combo of the user's choosing
 def delete_combo():
     combo_list = []
     for i in burger_Combos:
@@ -139,7 +105,6 @@ def delete_combo():
         burger_Combos.pop(o)
 
 
-# Prints out the current combo menu in the console
 def menu_print():
     print("=" * 20)
     for combo_id, combo_info in burger_Combos.items():
@@ -147,24 +112,9 @@ def menu_print():
 
         for key in combo_info:
             print(f"{key}: ${combo_info[key]:.2f}")
-        total_price_list = []
-        keys = burger_Combos[combo_id].keys()
-        for e in keys:
-            total_price_list.append(float(burger_Combos[combo_id][e]))
-        print(f"The total cost for the {combo_id} combo is "
-              f"${sum(total_price_list):.2f}")
     print("=" * 20)
 
 
-# Prints the final combo menu in the console and ends the program
-def exit_program():
-    print(f"The final menu with {len(burger_Combos)} combos")
-    menu_print()
-    quit()
-
-
-# The core of the program that all other functions come back to. It directs
-# the user to which ever function that is requested
 def welcome():
     option = easygui.buttonbox("Welcome to Michael's Burger Menu Adjuster "
                                "9000!\n\nWhat would you like to do?",
@@ -182,7 +132,7 @@ def welcome():
         time.sleep(0.5)
         menu_print()
     elif option == "Exit":
-        exit_program()
+        quit()
 
 
 while True:
