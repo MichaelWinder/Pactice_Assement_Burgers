@@ -32,19 +32,16 @@ def welcome():
                                "Combo Menu", "Exit"))
 
     if option == "Add Combo":
-        pass
-    # add_Combo()
+        print("add_combo()\n\n")
     elif option == "Change Combo":
-        pass
-    # change_Combo()
+        print("change_combo()\n\n")
     elif option == "Delete Combo":
-        pass
-    # delete_Combo()
+        print("delete_combo()\n\n")
     elif option == "Combo Menu":
-    # menu_print()
-        pass
+        print("menu_print()\n\n")
     elif option == "Exit":
-        pass
+        print("exit_program()\n\n")
 
 
-welcome()
+while True:
+    welcome()

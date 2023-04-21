@@ -31,7 +31,7 @@ def menu_print():
         print(f"\nCombo ID: {combo_id}")
 
         for key in combo_info:
-            print(f"{key}: ${combo_info[key]}")
+            print(f"{key}: ${combo_info[key]:.2f}")
         total_price_list = []
         keys = burger_Combos[combo_id].keys()
         for e in keys:
