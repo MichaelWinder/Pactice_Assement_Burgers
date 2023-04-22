@@ -84,7 +84,6 @@ def add_combo():
     burger_Combos[combo_ID][burger] = burger_price
     burger_Combos[combo_ID][side] = side_price
     burger_Combos[combo_ID][drink] = drink_price
-    welcome()
 
 
 def menu_print():
