@@ -7,26 +7,26 @@ import PIL
 
 burger_Combos = {
     "VALUE":
-        {"Beef burger": "5.69",
-         "Fries": "1.00",
-         "Fizzy drink": "1.00"
+        {"Beef burger": 5.69,
+         "Fries": 1.00,
+         "Fizzy drink": 1.00
          },
     "CHEEZY":
-        {"Cheeseburger": "6.69",
-         "Fries": "1.00",
-         "Fizzy drink": "1.00"
+        {"Cheeseburger": 6.69,
+         "Fries": 1.00,
+         "Fizzy drink": 1.00
          },
     "SUPER":
-        {"Cheeseburger": "6.69",
-         "Large fries": "2.00",
-         "Smoothie": "2.00"
+        {"Cheeseburger": 6.69,
+         "Large fries": 2.00,
+         "Smoothie": 2.00
          }
 }
 image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 
 def menu_print():
-    print("="*20)
+    print("=" * 20)
     for combo_id, combo_info in burger_Combos.items():
         print(f"\nCombo ID: {combo_id}")
 
@@ -38,7 +38,7 @@ def menu_print():
             total_price_list.append(float(burger_Combos[combo_id][e]))
         print(f"The total cost for the {combo_id} combo is "
               f"${sum(total_price_list):.2f}")
-    print("="*20)
+    print("=" * 20)
 
 
 def welcome():

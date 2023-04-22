@@ -66,7 +66,8 @@ def delete_combo():
     for i in burger_Combos:
         combo_list.append(i)
     option = easygui.buttonbox("What Combo would you like to delete",
-                               "Adjuster 9000", choices=combo_list)
+                               "Adjuster 9000", choices=combo_list,
+                               image=image)
     del burger_Combos[option]
 
 

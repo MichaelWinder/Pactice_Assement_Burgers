@@ -80,8 +80,8 @@ def add_combo():
                 image=image)
     total_price = burger_price + side_price + drink_price
     option = easygui.ynbox(f"Is the order correct?\n{combo_ID}\n{burger}: "
-                           f"${burger_price}\n{side}: ${side_price}\n{drink}: "
-                           f"${drink_price}\nTotal Price: $"
+                           f"${burger_price:.2f}\n{side}: ${side_price:.2f}"
+                           f"\n{drink}: ${drink_price:.2f}\nTotal Price: $"
                            f"{total_price:.2f}", "Adjuster 9000", image=image)
     if option:
         pass
@@ -109,8 +109,8 @@ def change_combo():
                                      f"like to edit", "Adjuster 9000",
                                      choices=combo_details_list)
     for u in option_2:
-        item = easygui.enterbox("Enter the name of the new item: ",
-                                "Adjuster 9000", image=image).capitalize()
+        item = easygui.enterbox(f"Enter the name of the new {u}: ",
+                                f"Adjuster 9000", image=image).capitalize()
         item_price = easygui.enterbox(f"Enter Price for {item}\nDon't use "
                                       f"$ sign", "Adjuster 9000", image=image)
         while True:
@@ -133,10 +133,10 @@ def delete_combo():
     combo_list = []
     for i in burger_Combos:
         combo_list.append(i)
-    option = easygui.multchoicebox("What Combo/s would you like to delete",
-                                   "Adjuster 9000", choices=combo_list)
-    for o in option:
-        burger_Combos.pop(o)
+    option = easygui.buttonbox("What Combo would you like to delete",
+                               "Adjuster 9000", choices=combo_list,
+                               image=image)
+    del burger_Combos[option]
 
 
 # Prints out the current combo menu in the console

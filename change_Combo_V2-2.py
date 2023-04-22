@@ -67,6 +67,7 @@ def change_combo():
     option = easygui.buttonbox("What Combo would you like to change",
                                "Adjuster 9000", choices=combo_list,
                                image=image)
+    print(f"Combo selected = {option}")
     combo_details_list = []
     keys = burger_Combos[option].keys()
     for e in keys:
@@ -75,8 +76,8 @@ def change_combo():
                                      f"like to edit", "Adjuster 9000",
                                      choices=combo_details_list)
     for u in option_2:
-        item = easygui.enterbox("Enter the name of the new item: ",
-                                "Adjuster 9000", image=image).capitalize()
+        item = easygui.enterbox(f"Enter the name of the new {u}: ",
+                                f"Adjuster 9000", image=image).capitalize()
         item_price = easygui.enterbox(f"Enter Price for {item}\nDon't use "
                                       f"$ sign", "Adjuster 9000", image=image)
         while True:

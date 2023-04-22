@@ -73,8 +73,8 @@ def add_combo():
                 image=image)
     total_price = burger_price + side_price + drink_price
     option = easygui.ynbox(f"Is the order correct?\n{combo_ID}\n{burger}: "
-                           f"${burger_price}\n{side}: ${side_price}\n{drink}: "
-                           f"${drink_price}\nTotal Price: $"
+                           f"${burger_price:.2f}\n{side}: ${side_price:.2f}"
+                           f"\n{drink}: ${drink_price:.2f}\nTotal Price: $"
                            f"{total_price:.2f}", "Adjuster 9000", image=image)
     if option:
         pass
