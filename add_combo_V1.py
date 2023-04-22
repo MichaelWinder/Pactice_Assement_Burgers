@@ -5,7 +5,7 @@ import time
 # the images
 import PIL
 
-burger_Combos = {
+burger_combos = {
     "VALUE":
         {"Beef burger": 5.69,
          "Fries": 1.00,
@@ -27,7 +27,7 @@ image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 # noinspection PyTypeChecker
 def add_combo():
-    combo_ID = easygui.enterbox("Enter Combo ID: ", "Adjuster "
+    combo_id = easygui.enterbox("Enter Combo ID: ", "Adjuster "
                                                     "9000",
                                 image=image).upper()
     burger = easygui.enterbox("Enter Burger: ", "Adjuster 9000",
@@ -48,15 +48,15 @@ def add_combo():
     burger_price = float(burger_price)
     side_price = float(side_price)
     drink_price = float(drink_price)
-    burger_Combos[combo_ID] = {}
-    burger_Combos[combo_ID][burger] = burger_price
-    burger_Combos[combo_ID][side] = side_price
-    burger_Combos[combo_ID][drink] = drink_price
+    burger_combos[combo_id] = {}
+    burger_combos[combo_id][burger] = burger_price
+    burger_combos[combo_id][side] = side_price
+    burger_combos[combo_id][drink] = drink_price
 
 
 def menu_print():
     print("="*20)
-    for combo_id, combo_info in burger_Combos.items():
+    for combo_id, combo_info in burger_combos.items():
         print(f"\nCombo ID: {combo_id}")
 
         for key in combo_info:

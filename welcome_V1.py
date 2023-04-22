@@ -4,7 +4,7 @@ import os
 # the images
 import PIL
 
-burger_Combos = {
+burger_combos = {
     "VALUE":
         {"Beef burger": "5.69",
          "Fries": "1.00",

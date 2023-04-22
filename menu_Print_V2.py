@@ -5,7 +5,7 @@ import time
 # the images
 import PIL
 
-burger_Combos = {
+burger_combos = {
     "VALUE":
         {"Beef burger": 5.69,
          "Fries": 1.00,
@@ -27,15 +27,15 @@ image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 def menu_print():
     print("=" * 20)
-    for combo_id, combo_info in burger_Combos.items():
+    for combo_id, combo_info in burger_combos.items():
         print(f"\nCombo ID: {combo_id}")
 
         for key in combo_info:
             print(f"{key}: ${combo_info[key]:.2f}")
         total_price_list = []
-        keys = burger_Combos[combo_id].keys()
+        keys = burger_combos[combo_id].keys()
         for e in keys:
-            total_price_list.append(float(burger_Combos[combo_id][e]))
+            total_price_list.append(float(burger_combos[combo_id][e]))
         print(f"The total cost for the {combo_id} combo is "
               f"${sum(total_price_list):.2f}")
     print("=" * 20)

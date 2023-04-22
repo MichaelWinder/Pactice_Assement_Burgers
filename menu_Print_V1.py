@@ -5,7 +5,7 @@ import time
 # the images
 import PIL
 
-burger_Combos = {
+burger_combos = {
     "VALUE":
         {"Beef burger": "5.69",
          "Fries": "1.00",
@@ -26,7 +26,7 @@ image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 
 def menu_print():
-    for combo_id, combo_info in burger_Combos.items():
+    for combo_id, combo_info in burger_combos.items():
         print(f"\nCombo ID: {combo_id}")
 
         for key in combo_info:

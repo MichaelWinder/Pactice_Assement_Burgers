@@ -5,7 +5,7 @@ import time
 # the images
 import PIL
 
-burger_Combos = {
+burger_combos = {
     "VALUE":
         {"Beef burger": 5.69,
          "Fries": 1.00,
@@ -26,7 +26,7 @@ image = os.environ['USERPROFILE'] + "\\Downloads\\Michael King.png"
 
 
 def add_combo():
-    combo_ID = easygui.enterbox("Enter Combo ID: ", "Adjuster "
+    combo_id = easygui.enterbox("Enter Combo ID: ", "Adjuster "
                                                     "9000",
                                 image=image).upper()
     burger = easygui.enterbox("Enter Burger: ", "Adjuster 9000",
@@ -72,7 +72,7 @@ def add_combo():
                 f"Enter Price for {drink}\nDon't use $ sign", "Adjuster 9000",
                 image=image)
     total_price = burger_price + side_price + drink_price
-    option = easygui.ynbox(f"Is the order correct?\n{combo_ID}\n{burger}: "
+    option = easygui.ynbox(f"Is the order correct?\n{combo_id}\n{burger}: "
                            f"${burger_price:.2f}\n{side}: ${side_price:.2f}"
                            f"\n{drink}: ${drink_price:.2f}\nTotal Price: $"
                            f"{total_price:.2f}", "Adjuster 9000", image=image)
@@ -80,15 +80,15 @@ def add_combo():
         pass
     else:
         add_combo()
-    burger_Combos[combo_ID] = {}
-    burger_Combos[combo_ID][burger] = burger_price
-    burger_Combos[combo_ID][side] = side_price
-    burger_Combos[combo_ID][drink] = drink_price
+    burger_combos[combo_id] = {}
+    burger_combos[combo_id][burger] = burger_price
+    burger_combos[combo_id][side] = side_price
+    burger_combos[combo_id][drink] = drink_price
 
 
 def menu_print():
     print("="*20)
-    for combo_id, combo_info in burger_Combos.items():
+    for combo_id, combo_info in burger_combos.items():
         print(f"\nCombo ID: {combo_id}")
 
         for key in combo_info:
